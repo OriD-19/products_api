@@ -3,8 +3,18 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [TypeOrmModule.forRoot({
+        type: 'postgres',
+        host: process.env.DB_HOST,
+        port: 5432,
+        username: 'postgres',
+        password: 'Jrlazo',
+        database: 'semana_3',
+        // include the entities defined in the exercises
+        entities: [Comment, Producto],
+        synchronize: true,
+    }), ProductsModule],
+    controllers: [AppController],
+    providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
