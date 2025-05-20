@@ -13,7 +13,7 @@ import { Producto } from './producto/producto.entity';
       port: 5432,
       username: 'postgres',
       password: 'suser',
-      database: 'semana3',
+      database: 'semana_3',
       entities: [Producto],
       synchronize: true,
     }),
