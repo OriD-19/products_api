@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Producto } from './producto/producto.entity';
+import { ProductoModule } from './producto/producto.module';
 
 
 @Module({
@@ -17,6 +18,9 @@ import { Producto } from './producto/producto.entity';
       entities: [Producto],
       synchronize: true,
     }),
+    ProductoModule
   ],
+  controllers: [AppController],
+  providers: [AppService]
 })
 export class AppModule {}
