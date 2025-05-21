@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Producto } from './producto/producto.entity';
+import { ProductoModule } from './producto/producto.module';
 
 
 @Module({
@@ -16,7 +17,7 @@ import { Producto } from './producto/producto.entity';
         // include the entities defined in the exercises
         entities: [Comment, Producto],
         synchronize: true,
-    }), ProductsModule],
+    }), ProductoModule],
     controllers: [AppController],
     providers: [AppService],
 })

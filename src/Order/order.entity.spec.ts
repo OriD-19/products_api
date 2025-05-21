@@ -16,6 +16,6 @@ export class Order{
     @CreateDateColumn()
     fechaCreacion: Date;
 
-    @Column('decimal', {presicion: 10, scale: 2})
+    @Column('decimal', {precision: 10, scale: 2})
     montoTotal: number;
 }
