@@ -12,10 +12,10 @@ import { ProductoModule } from './producto/producto.module';
         host: process.env.DB_HOST,
         port: 5432,
         username: 'postgres',
-        password: 'Jrlazo',
+        password: 'Jrlazo23',
         database: 'semana_3',
         // include the entities defined in the exercises
-        entities: [Comment, Producto],
+        entities: [Producto],
         synchronize: true,
     }), ProductoModule],
     controllers: [AppController],
