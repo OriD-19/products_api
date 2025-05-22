@@ -11,7 +11,7 @@ export class ReservaService {
   ) {}
 
   async crearReserva(nombre: string, fechaInicio: Date, fechaFin: Date): Promise<reserva> {
-    // Validar que la fecha de fin sea posterior a la de inicio
+    // Validar que la fecha de fin sea mayor a la de inicio
     if (fechaFin < fechaInicio) {
       throw new BadRequestException('La fecha de fin debe ser posterior a la fecha de inicio.');
     }
@@ -40,7 +40,8 @@ export class ReservaService {
     const nuevaReserva = this.reservaRepository.create({ nombre, fechaInicio, fechaFin });
     return this.reservaRepository.save(nuevaReserva);
   }
-
+ 
+  //obtener todas las reservas
   async findAll(): Promise<reserva[]> {
     return this.reservaRepository.find();
   }
