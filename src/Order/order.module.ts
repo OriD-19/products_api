@@ -4,7 +4,7 @@ import { OrderService } from './order.service';
 import { OrderController } from './order.controller';
 import { Client } from '../clients/client.entity';
 import { Producto } from '../producto/producto.entity';
-import { Order } from "./order.entity.spec";
+import { Order } from "./order.entity";
 
 @Module
 ({

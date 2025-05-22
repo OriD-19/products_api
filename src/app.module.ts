@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Producto } from './producto/producto.entity';
 import { ProductoModule } from './producto/producto.module';
+import { Client } from './clients/client.entity';
+import { Order } from './Order/order.entity';
+import { OrderModule } from './Order/order.module';
 
 
 @Module({
@@ -15,9 +18,9 @@ import { ProductoModule } from './producto/producto.module';
         password: 'Jrlazo23',
         database: 'semana_3',
         // include the entities defined in the exercises
-        entities: [Producto],
+        entities: [Producto,Client, Order],
         synchronize: true,
-    }), ProductoModule],
+    }), ProductoModule, OrderModule],
     controllers: [AppController],
     providers: [AppService],
 })
