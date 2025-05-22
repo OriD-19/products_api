@@ -12,20 +12,26 @@ export class ReservaService {
 
   async crearReserva(nombre: string, fechaInicio: Date, fechaFin: Date): Promise<reserva> {
     // Validar que la fecha de fin sea posterior a la de inicio
-    if (fechaFin <= fechaInicio) {
+    if (fechaFin < fechaInicio) {
       throw new BadRequestException('La fecha de fin debe ser posterior a la fecha de inicio.');
     }
-
-    // Verificar si el cliente ya tiene reservas que se crucen con las nuevas fechas
+    
     const reservas = await this.reservaRepository.find({ where: { nombre } });
 
+    // Aseguramos que las fechas son objetos Date reales
+    const nuevaInicio = new Date(fechaInicio);
+    const nuevaFin = new Date(fechaFin);
+
     for (const r of reservas) {
+      const existenteInicio = new Date(r.fechaInicio);
+      const existenteFin = new Date(r.fechaFin);
+
       const hayConflicto =
-        fechaInicio <= r.fechaFin && fechaFin >= r.fechaInicio;
+        nuevaInicio <= existenteFin && nuevaFin >= existenteInicio;
 
       if (hayConflicto) {
         throw new ConflictException(
-          `Ya existe una reserva para ${nombre} entre ${r.fechaInicio.toDateString()} y ${r.fechaFin.toDateString()}`
+          `Ya existe una reserva para ${nombre} entre ${existenteInicio.toDateString()} y ${existenteFin.toDateString()}`
         );
       }
     }
