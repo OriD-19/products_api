@@ -22,6 +22,7 @@ export class ReservaService {
     const nuevaInicio = new Date(fechaInicio);
     const nuevaFin = new Date(fechaFin);
 
+    //iteramos sobre cada reserva pa ver si en alguna se encuentra algun conflicto 
     for (const r of reservas) {
       const existenteInicio = new Date(r.fechaInicio);
       const existenteFin = new Date(r.fechaFin);
