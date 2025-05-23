@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductsModule } from './products/products.module';
-import { Producto } from './products/product.entity';
 import { Comment } from './comments/comment.entity';
 import { CommentsModule } from './comments/comments.module';
 import { ClientsModule } from './clients/clients.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Client } from './clients/client.entity';
+import { Producto } from './producto/producto.entity';
+import { ProductoModule } from './producto/producto.module';
 
 @Module({
     imports: [TypeOrmModule.forRoot({
@@ -20,7 +20,7 @@ import { Client } from './clients/client.entity';
         // include the entities defined in the exercises
         entities: [Comment, Producto, Client],
         synchronize: true,
-    }), ProductsModule, CommentsModule, ClientsModule],
+    }), CommentsModule, ClientsModule, ProductoModule],
     controllers: [AppController],
     providers: [AppService],
 })

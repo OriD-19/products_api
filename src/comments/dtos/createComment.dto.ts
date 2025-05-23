@@ -10,4 +10,8 @@ export class CreateCommentDto {
     @Max(5)
     @Min(1)
     calificacion: number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    productId: number;
 }

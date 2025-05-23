@@ -1,5 +1,5 @@
-import { Producto } from "src/products/product.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Producto } from "src/producto/producto.entity";
 
 @Entity()
 export class Comment {

@@ -6,22 +6,21 @@ import { CreateCommentDto } from './dtos/createComment.dto';
 export class CommentsController {
     constructor(private readonly commentsService: CommentsService) { }
 
-    @Post(':id')
+    @Post()
     @UsePipes(new ValidationPipe())
-    createComment(@Param('id', ParseIntPipe) productId: number,
-        @Body() createCommentDto: CreateCommentDto) {
+    createComment(@Body() createCommentDto: CreateCommentDto) {
         // validation of the content sent by the user
-        const { comentario, calificacion } = createCommentDto;
+        const { comentario, calificacion, productId } = createCommentDto;
         return this.commentsService.create(comentario, calificacion, productId);
     }
 
-    @Get(':id')
+    @Get('/products/:id')
     findAllFromProduct(@Param('id', ParseIntPipe) id: number) {
         // validation of the content sent by the user
         return this.commentsService.findAllFromProduct(id);
     }
 
-    @Get()
+    @Get("/products")
     findAll() {
         // validation of the content sent by the user
         return this.commentsService.findAll();
