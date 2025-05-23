@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { Order } from "src/Order/order.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Entity()
 @Unique(['email'])
@@ -13,6 +14,6 @@ export class Client{
     @Column()
     email: string;
 
+    @OneToMany(() => Order, (order) => order.client)
+    orders:Order[]
 }
-
-export class ClientEntity {}

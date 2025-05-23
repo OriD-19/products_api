@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Client } from './clients/client.entity';
 import { Producto } from './producto/producto.entity';
 import { ProductoModule } from './producto/producto.module';
+import { Order } from './Order/order.entity';
+import { OrderModule } from './Order/order.module';
 
 @Module({
     imports: [TypeOrmModule.forRoot({
@@ -18,9 +20,9 @@ import { ProductoModule } from './producto/producto.module';
         password: 'suser',
         database: 'semana_3',
         // include the entities defined in the exercises
-        entities: [Comment, Producto, Client],
+        entities: [Comment, Producto, Client, Order],
         synchronize: true,
-    }), CommentsModule, ClientsModule, ProductoModule],
+    }), CommentsModule, ClientsModule, ProductoModule, OrderModule],
     controllers: [AppController],
     providers: [AppService],
 })
